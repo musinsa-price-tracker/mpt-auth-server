@@ -3,9 +3,11 @@ package com.mpt.authservice.Controller;
 import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,9 +34,23 @@ public class OauthController {
         return ResponseEntity.ok().body(userResponse);
     }
 
+	// 파라미터로 전달받은 토큰 처리
     @GetMapping("/api/token")
     public ResponseEntity<UserResponse> validCheck(@RequestParam(name = "ACCESS_TOKEN", required = false) String token) throws IOException {
         UserResponse userResponse = oauthService.oauthVerifyToken(token);
+        return ResponseEntity.ok().body(userResponse);
+    }
+
+    // 헤더로 전달받은 토큰 처리
+    @GetMapping("/api/access_token_info")
+    public ResponseEntity<UserResponse> getAccessTokenInfo(@RequestHeader HttpHeaders httpHeaders) throws IOException {
+        String token = httpHeaders.getFirst("Authorization");
+        if(token.toLowerCase().startsWith("Bearer".toLowerCase())) {
+            token = token.substring("Bearer".length()).trim();
+        }
+
+        UserResponse userResponse = oauthService.oauthVerifyToken(token);
+        System.out.println(userResponse);
         return ResponseEntity.ok().body(userResponse);
     }
 }
