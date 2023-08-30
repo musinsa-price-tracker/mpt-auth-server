@@ -17,21 +17,21 @@
             url : https://accounts.google.com/o/oauth2/v2/auth
             client-id : "Your Google Web Application Client ID"
             client-secret : "Your Google Web Application Client Secret"
-            callback-url : [URL Base]/api/oauth/login/google/redirection
+            callback-url : [URL Base]/api/login/google/redirection
             token-url : https://oauth2.googleapis.com/token
             userinfo-url : https://www.googleapis.com/oauth2/v1/userinfo
             scope : https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile
         kakao:
             url : https://kauth.kakao.com/oauth/authorize
             client-id : "Your Kakao Application Client ID"
-            callback-url : [URL Base]/api/oauth/login/kakao/redirection
+            callback-url : [URL Base]/api/login/kakao/redirection
             token-url : https://kauth.kakao.com/oauth/token
             userinfo-url : https://kapi.kakao.com/v2/user/me
         naver:
             url : https://nid.naver.com/oauth2.0/authorize
             client-id : "Your Naver Application Client ID"
             client-secret : "Your Naver Application Client Secret"
-            callback-url : [URL Base]/api/oauth/login/naver/redirection
+            callback-url : [URL Base]/api/login/naver/redirection
             token-url : https://nid.naver.com/oauth2.0/token
             userinfo-url : https://openapi.naver.com/v1/nid/me
     Token:
