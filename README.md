@@ -2,8 +2,8 @@
 * Run Local
     ```console
     $ git clone https://github.com/LeeJusuk208/auth-server.git
-    $ cd auth-server
-    $ ./gradle_build.sh # Spring build with Gradle
+    $ cd auth-server/auth-service
+    $ ./gradlew clean build # Spring build with Gradle
     $ java -jar ./build/libs/auth-server-1.0.jar
     ```
 * Before running the server, you need to create an application.yml file
